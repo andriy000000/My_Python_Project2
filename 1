@@ -1,0 +1,37 @@
+import random
+
+class Pet:
+    def __init__(self, name, species):
+        self.name = name
+        self.species = species
+        self.energy = 100
+        self.happiness = 100
+
+    def play(self):
+        self.energy -= 10
+        self.happiness += 15
+        print(f"{self.name} is playing. Energy: {self.energy}, Happiness: {self.happiness}")
+
+    def sleep(self):
+        self.energy += 20
+        print(f"{self.name} is sleeping. Energy: {self.energy}")
+
+    def eat(self):
+        self.energy += 10
+        print(f"{self.name} is eating. Energy: {self.energy}")
+
+pet_name = input("Enter pet name: ")
+pet_species = input("Enter pet species (cat/dog): ")
+
+if pet_species.lower() == 'cat' or pet_species.lower() == 'dog':
+    pet = Pet(name=pet_name, species=pet_species)
+    for _ in range(5):
+        action = random.choice(['play', 'sleep', 'eat'])
+        if action == 'play':
+            pet.play()
+        elif action == 'sleep':
+            pet.sleep()
+        else:
+            pet.eat()
+else:
+    print("Invalid species. Only 'cat' and 'dog' are allowed.")
